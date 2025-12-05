@@ -17,8 +17,10 @@ RUN dotnet publish "ASP_Core.csproj" -c Release -o /app/publish /p:UseAppHost=fa
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8080
+
+# Set environment variable to ensure ASP.NET Core listens on port 8080
+ENV ASPNETCORE_URLS=http://+:8080
 
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ASP_Core.dll"]

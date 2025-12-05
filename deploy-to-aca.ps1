@@ -251,7 +251,7 @@ if ($LASTEXITCODE -ne 0) {
         --registry-server $acrLoginServer `
         --registry-username $acrUsername `
         --registry-password $acrPassword `
-        --target-port 80 `
+        --target-port 8080 `
         --ingress external `
         --min-replicas 1 `
         --max-replicas 3 `
